@@ -24,11 +24,9 @@ def ngram(it, n, norm_func):
 
 
 for N in range(6, 75):
-    c = collections.Counter()
-    d = collections.Counter()
     with open("iliad.txt") as f:
-        for x in ngram(f.read().split(), N, normalise):
-            c[x] += 1
+        c = collections.Counter(ngram(f.read().split(), N, normalise))
+    d = collections.Counter()
     for t, count in c.most_common():
         d[count] += 1
 
