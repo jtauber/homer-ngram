@@ -7,11 +7,14 @@ def normalise(w):
     return w.strip("·.,")
 
 
-def ngram(it, n, norm_func):
+def ngram(it, n, norm_func=None):
     """
     generates the n-grams (for given `n`) for a given iterator `it`, calling
-    the given `norm_func` function on each item as well.
+    the optional given `norm_func` function on each item as well.
     """
+    if norm_func is None:
+        norm_func = lambda w: w  # identity function
+
     window = ("*",) * n
 
     for current in it:
