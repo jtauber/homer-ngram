@@ -36,13 +36,13 @@ def summarise_counter(c):
 ngrams = {}
 subgrams = {}
 
-filename = "test.txt"
-s = 1
-e = 5
+# filename = "test2.txt"
+# s = 1
+# e = 5
 
-# filename = "iliad.txt"
-# s = 70
-# e = 74
+filename = "iliad.txt"
+s = 4
+e = 74
 
 for N in range(e, s - 1, -1):
     with open(filename) as f:
@@ -52,7 +52,7 @@ for N in range(e, s - 1, -1):
         for X, c in ngrams[N].items():
             d = subgrams.get(N, {}).get(X)
             if c > 1 and (d is None or c > d):
-                print("\t", X, c, d)
+                print("\t", c, d, "|", " ".join(X))
             if c > 1:
                 for Y in ngram(X, N - 1):
                     subgrams[N - 1][Y] += c
