@@ -34,6 +34,7 @@ def summarise_counter(c):
     return dict(d)
 
 ngrams = {}
+subgrams = {}
 
 filename = "test.txt"
 s = 1
@@ -46,11 +47,12 @@ e = 5
 for N in range(e, s - 1, -1):
     with open(filename) as f:
         ngrams[N] = collections.Counter(ngram(f.read().split(), N, normalise))
-        if N < e:
-            for X, c in ngrams[N + 1].items():
-                if c > 1:
-                    ngrams[N].subtract(collections.Counter(ngram(X, N)))
         print(N)
-        for a, b in ngrams[N].items():
-            if b > 1:
-                print("\t", a, b)
+        subgrams[N - 1] = collections.Counter()
+        for X, c in ngrams[N].items():
+            d = subgrams.get(N, {}).get(X)
+            if c > 1 and (d is None or c > d):
+                print("\t", X, c, d)
+            if c > 1:
+                for Y in ngram(X, N - 1):
+                    subgrams[N - 1][Y] += c
