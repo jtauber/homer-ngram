@@ -50,9 +50,9 @@ for N in range(e, s - 1, -1):
         print(N)
         subgrams[N - 1] = collections.Counter()
         for X, c in ngrams[N].items():
-            d = subgrams.get(N, {}).get(X)
-            if c > 1 and (d is None or c > d):
-                print("\t", c, d, "|", " ".join(X))
+            d = subgrams.get(N, {}).get(X, 0)
+            if c > 1 and (d == 0 or c > d):
+                print("   ", c, d, "|", " ".join(X))
             if c > 1:
                 for Y in ngram(X, N - 1):
                     subgrams[N - 1][Y] += c
