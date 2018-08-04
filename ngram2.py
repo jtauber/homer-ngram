@@ -37,7 +37,7 @@ ngrams = {}
 
 filename = "test.txt"
 s = 1
-e = 4
+e = 5
 
 # filename = "iliad.txt"
 # s = 70
@@ -52,4 +52,5 @@ for N in range(e, s - 1, -1):
                     ngrams[N].subtract(collections.Counter(ngram(X, N)))
         print(N)
         for a, b in ngrams[N].items():
-            print("\t", a, b)
+            if b > 1:
+                print("\t", a, b)
