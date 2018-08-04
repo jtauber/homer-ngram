@@ -35,15 +35,21 @@ def summarise_counter(c):
 
 ngrams = {}
 
-s = 3
-e = 5
+filename = "test.txt"
+s = 1
+e = 4
+
+# filename = "iliad.txt"
+# s = 70
+# e = 74
 
 for N in range(e, s - 1, -1):
-    with open("test.txt") as f:
+    with open(filename) as f:
         ngrams[N] = collections.Counter(ngram(f.read().split(), N, normalise))
         if N < e:
-            for X in ngrams[N + 1].keys():
-                ngrams[N].subtract(collections.Counter(ngram(X, N)))
+            for X, c in ngrams[N + 1].items():
+                if c > 1:
+                    ngrams[N].subtract(collections.Counter(ngram(X, N)))
         print(N)
         for a, b in ngrams[N].items():
             print("\t", a, b)
