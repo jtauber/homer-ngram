@@ -2,7 +2,7 @@
 
 One problem with naïve n-gram generation for multiple n (like `ngram.py` does) is that all the subgrams of a repeated n-gram will show up as well and this generally not what is wanted.
 
-For example, the string `A B C D A B C A B C D` has a repeated 4-gram `A B C D`. Naïve generation of 3-grams gives three `A B C` and two `B C D`. The `A B C` is helpful to know because it not only occurs as part of `A B C D` but also apart of it. In contrast, `B C D` is _only_ repeated because it forms part of the longer sequence `A B C D`.
+For example, the string `A B C D A B C A B C D` has a repeated 4-gram `A B C D`. Naïve generation of 3-grams gives three `A B C` and two `B C D`. The `A B C` is helpful to know because it not only occurs as part of `A B C D` but also apart from it. In contrast, `B C D` is _only_ repeated because it forms part of the longer sequence `A B C D`.
 
 `ngram2.py` attempts to generate a more nuanced list of n-grams based on discussions between Sophia Sklaviadis and myself.
 
