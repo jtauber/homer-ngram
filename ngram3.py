@@ -53,7 +53,11 @@ subgrams = {}
 # start_N = 4
 # end_N = 100
 
-filename = "odyssey2.txt"
+# filename = "odyssey2.txt"
+# start_N = 4
+# end_N = 100
+
+filename = "combined2.txt"
 start_N = 4
 end_N = 100
 

@@ -30,9 +30,15 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 `odyssey.xml` comes from https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg002/tlg0012.tlg002.perseus-grc2.xml
 `odyssey2.txt` is the result of running `xml2line.py` (on `odyssey.xml`)
 
+`combined2.txt` is just the concatenation of `iliad2.txt` and `odyssey2.txt`.
+
 `output.txt` is the output of running `ngram2.py` on `iliad.txt`.
 
-`iliad2.txt` has line references marked. `ngram3.py` is similar to (although slower than) `ngram2.py` except it can track these references.
+`iliad2.txt` and `odyssey2.txt` have line references marked. `ngram3.py` is similar to (although slower than) `ngram2.py` except it can track these references.
+
 
 `output-iliad.txt` is the output of running `ngram3.py` on `iliad2.txt`.
+
 `output-odyssey.txt` is the output of running `ngram3.py` on `odyssey2.txt`.
+
+`output-combined.txt` is the output of running `ngram3.py` on `combined2.txt`.
