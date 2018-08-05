@@ -39,22 +39,22 @@ ngrams = {}
 subgrams = {}
 
 filename = "test.txt"
-s = 2
-e = 5
+start_N = 2
+end_N = 5
 
 # filename = "iliad.txt"
-# s = 4
-# e = 74
+# start_N = 4
+# end_N = 74
 
-for N in range(e, s - 1, -1):
+# N descends from end_N to start_N inclusive
+for N in range(end_N, start_N - 1, -1):
     with open(filename) as f:
         ngrams[N] = collections.Counter(ngram(f.read().split(), N, normalise))
-        print(N)
         subgrams[N - 1] = collections.Counter()
         for X, naive_count in ngrams[N].items():
             subgram_count = subgrams.get(N, {}).get(X, 0)
             if naive_count > 1 and naive_count > subgram_count:
-                print("   ", naive_count, subgram_count, "|", " ".join(X))
+                print(f"{N} {naive_count} {subgram_count} | {' '.join(X)}")
             if naive_count > 1:
                 for Y in ngram(X, N - 1):
                     subgrams[N - 1][Y] += naive_count
