@@ -26,9 +26,6 @@ which should be read as following:
 * the `3`-gram `A B C` is repeated `3` times and, of those, `2` are the result of being subgrams of a 4-gram
 * there are no repeated `2`-grams that are not merely subgrams of the repeated 3-grams
 
-The heuristic developed by Sklaviadis and myself is that the n-gram will be shown iff
-
-* the naïve n-gram count > 1; AND
-* either the count from subgrams of n+1-grams is zero OR the naïve n-gram count > count from subgrams of n+1-grams
+The heuristic developed by Sklaviadis and myself is that the n-gram will be shown iff the naïve n-gram count > count from subgrams of repeated n+1-grams.
 
 `output.txt` is the output of running `ngram2.py` on `iliad.txt`.
