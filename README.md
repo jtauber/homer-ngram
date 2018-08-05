@@ -34,4 +34,5 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 
 `iliad2.txt` has line references marked. `ngram3.py` is similar to (although slower than) `ngram2.py` except it can track these references.
 
-`output2.txt` is the output of running `ngram3.py` on `iliad2.txt`.
+`output-iliad.txt` is the output of running `ngram3.py` on `iliad2.txt`.
+`output-odyssey.txt` is the output of running `ngram3.py` on `odyssey2.txt`.
