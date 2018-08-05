@@ -24,3 +24,7 @@ which should be read as following:
 The heuristic developed by Sklaviadis and myself is that the n-gram will be shown iff the naïve n-gram count > 1 AND the naïve n-gram count > the count from subgrams of repeated n+1-grams.
 
 `output.txt` is the output of running `ngram2.py` on `iliad.txt`.
+
+`iliad2.txt` has line references marked. `ngram3.py` is similar to (although slower than) `ngram2.py` except it can track these references.
+
+`output2.txt` is the output of running `ngram3.py` on `iliad2.txt`.
