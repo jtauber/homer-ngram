@@ -42,3 +42,5 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 `output-odyssey.txt` is the output of running `ngram3.py` on `odyssey2.txt`.
 
 `output-combined.txt` is the output of running `ngram3.py` on `combined2.txt`.
+
+`output-intersection.txt` is the lines of `output-combined.txt` with both Iliad and Odyssey references.
