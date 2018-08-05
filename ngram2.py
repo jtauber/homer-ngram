@@ -38,13 +38,13 @@ def summarise_counter(c):
 ngrams = {}
 subgrams = {}
 
-filename = "test.txt"
-start_N = 2
-end_N = 5
+# filename = "test.txt"
+# start_N = 2
+# end_N = 5
 
-# filename = "iliad.txt"
-# start_N = 4
-# end_N = 74
+filename = "iliad.txt"
+start_N = 4
+end_N = 100
 
 # N descends from end_N to start_N inclusive
 for N in range(end_N, start_N - 1, -1):
