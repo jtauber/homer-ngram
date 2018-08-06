@@ -48,7 +48,7 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 
 `tlg0012.tlg001.perseus-grc1.tb.xml` and `tlg0012.tlg002.perseus-grc1.tb.xml` come from https://github.com/PerseusDL/treebank_data/tree/master/v2.1/Greek
 
- `tb2line.py` converts the Treebank XML into a line based format.
+`tb2line.py` converts the Treebank XML into a line based format.
 
 `iliad-lemma.txt` is the lemmatised Iliad by line.
 
