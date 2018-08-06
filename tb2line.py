@@ -4,9 +4,11 @@ import re
 
 from lxml import etree
 
-filename = "tlg0012.tlg001.perseus-grc1.tb.xml"
-prefix = "Il"
+# filename = "tlg0012.tlg001.perseus-grc1.tb.xml"
+# prefix = "Il"
 
+filename = "tlg0012.tlg002.perseus-grc1.tb.xml"
+prefix = "Od"
 
 prev_ref = None
 with open(filename) as f:
