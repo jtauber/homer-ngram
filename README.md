@@ -44,3 +44,12 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 `output-combined.txt` is the output of running `ngram3.py` on `combined2.txt`.
 
 `output-intersection.txt` is the lines of `output-combined.txt` with both Iliad and Odyssey references.
+
+
+`tlg0012.tlg001.perseus-grc1.tb.xml` comes from https://github.com/PerseusDL/treebank_data/tree/master/v2.1/Greek
+
+`tb2line.py` converts the Treebank XML into a line based format.
+
+`iliad-lemma.txt` is the lemmatised Iliad by line.
+
+`output-iliad-lemma.txt` is the output of running `ngram3.py` on `iliad-lemma.txt`.

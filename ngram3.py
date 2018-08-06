@@ -57,7 +57,11 @@ subgrams = {}
 # start_N = 4
 # end_N = 100
 
-filename = "combined2.txt"
+# filename = "combined2.txt"
+# start_N = 4
+# end_N = 100
+
+filename = "iliad-lemma.txt"
 start_N = 4
 end_N = 100
 
