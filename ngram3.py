@@ -77,7 +77,7 @@ for N in range(end_N, start_N - 1, -1):
         naive_count = len(refs)
         subgram_count = subgrams.get(N, {}).get(X, 0)
         if naive_count > 1 and naive_count > subgram_count:
-            print(f"{N} {naive_count} {subgram_count} | {' '.join(X)} | {' '.join(f'{start_ref}-{end_ref}' for start_ref, end_ref in refs)}")
+            print(f"{N} {naive_count} {subgram_count} | {' '.join(f'{start_ref}-{end_ref}' for start_ref, end_ref in refs)} | {' '.join(X)}")
         if naive_count > 1:
             for Y in ngram(X, N - 1):
                 subgrams[N - 1][Y] += naive_count
