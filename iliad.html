@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iliad</title>
+    <meta charset="utf-8" />
+    <style>
+      .ngram {
+        stroke: #CCC;
+      }
+      /* .nlength-8 {
+        stroke: #999;
+      } */
+      /* .ngram-4 {
+        stroke: #000;
+      } */
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Iliad n-grams</h1>
+      <div id="drawing" class="svg"></div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
+    <script src="ngrams.js"></script>
+    <script>
+      var draw = SVG('drawing').size(1200, 1000);
+      var book_lengths = [
+        611, 877, 461, 544, 909, 529, 482, 565, 713, 579,
+        848, 471, 837, 522, 746, 867, 761, 616, 424, 503,
+        611, 515, 897, 804
+      ]
+      var width = 50;
+      var gutter = 5;
+      var top_margin = 20;
+      for (var i = 0; i < book_lengths.length; i++) {
+        var l = book_lengths[i];
+        draw.text((i + 1).toString()).move((i + 0.5) * width - (gutter / 2), 0).attr({ stroke: '#CCC'}).font('anchor', 'middle');
+        draw.rect(width - gutter, l).move(i * width, top_margin - 0.5).attr({ fill: '#F0F0F0'});
+      }
+      for (var i = 0; i < ngrams.length; i++) {
+        var n = ngrams[i];
+        var ngram_id = n[0];
+        var ngram_length = n[1];
+        var start_book = n[2];
+        var start_line = n[3];
+        var start_offset = n[4];
+        var end_book = n[5];
+        var end_line = n[6];
+        var end_offset = n[7];
+        if (start_line == end_line) {
+          var y = top_margin + (start_line - 1);
+          var sx = (start_book - 1) * width + start_offset * (width - gutter) / 1000;
+          var ex = (start_book - 1) * width + end_offset * (width - gutter) / 1000;
+          draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+        } else if (start_line + 1 == end_line) {
+          var y = top_margin + (start_line - 1);
+          var sx = (start_book - 1) * width + start_offset * (width - gutter) / 1000;
+          var ex = (start_book - 1) * width + (width - gutter);
+          draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+          var y = top_margin + (end_line - 1);
+          var sx = (start_book - 1) * width + 0;
+          var ex = (start_book - 1) * width + end_offset * (width - gutter) / 1000;
+          draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+        } else {
+          var y = top_margin + (start_line - 1);
+          var sx = (start_book - 1) * width + start_offset * (width - gutter) / 1000;
+          var ex = (start_book - 1) * width + (width - gutter);
+          draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+          var y = top_margin + (end_line - 1);
+          var sx = (start_book - 1) * width + 0;
+          var ex = (start_book - 1) * width + end_offset * (width - gutter) / 1000;
+          draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+          for (var y = top_margin + start_line; y < top_margin + (end_line - 1); y++) {
+            var sx = (start_book - 1) * width + 0;
+            var ex = (start_book - 1) * width + (width - gutter);
+            draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
