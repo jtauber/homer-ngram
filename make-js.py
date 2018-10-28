@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 
-print("var ngrams = [")
+print("""
+var book_lengths = [
+  611, 877, 461, 544, 909, 529, 482, 565, 713, 579,
+  848, 471, 837, 522, 746, 867, 761, 616, 424, 503,
+  611, 515, 897, 804
+]
+""")
+
+print("// id, length, start_book, start_line, start_offset, end_book, end_line, end_offset")
+print("var ngram_offsets = [")
 
 with open("output-iliad4.txt") as f:
     gram_num = 0

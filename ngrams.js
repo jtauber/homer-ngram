@@ -1,4 +1,12 @@
-var ngrams = [
+
+var book_lengths = [
+  611, 877, 461, 544, 909, 529, 482, 565, 713, 579,
+  848, 471, 837, 522, 746, 867, 761, 616, 424, 503,
+  611, 515, 897, 804
+]
+
+// id, length, start_book, start_line, start_offset, end_book, end_line, end_offset
+var ngram_offsets = [
   [1, 74, 2, 23, 0, 2, 33, 600],
   [1, 74, 2, 60, 0, 2, 70, 545],
   [2, 49, 11, 362, 0, 11, 367, 1000],

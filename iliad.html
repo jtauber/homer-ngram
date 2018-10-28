@@ -24,11 +24,6 @@
     <script src="ngrams.js"></script>
     <script>
       var draw = SVG('drawing').size(1200, 1000);
-      var book_lengths = [
-        611, 877, 461, 544, 909, 529, 482, 565, 713, 579,
-        848, 471, 837, 522, 746, 867, 761, 616, 424, 503,
-        611, 515, 897, 804
-      ]
       var width = 50;
       var gutter = 5;
       var top_margin = 20;
@@ -37,8 +32,8 @@
         draw.text((i + 1).toString()).move((i + 0.5) * width - (gutter / 2), 0).attr({ stroke: '#CCC'}).font('anchor', 'middle');
         draw.rect(width - gutter, l).move(i * width, top_margin - 0.5).attr({ fill: '#F0F0F0'});
       }
-      for (var i = 0; i < ngrams.length; i++) {
-        var n = ngrams[i];
+      for (var i = 0; i < ngram_offsets.length; i++) {
+        var n = ngram_offsets[i];
         var ngram_id = n[0];
         var ngram_length = n[1];
         var start_book = n[2];
