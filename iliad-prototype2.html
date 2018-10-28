@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iliad</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i&amp;subset=greek,greek-ext,latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Noto Serif';
+      }
+      .ngram {
+        stroke: #000;
+      }
+      .side-by-side {
+        max-width: 1200px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .text {
+        font-size: 10pt;
+      }
+      .text .ref {
+        font-size: 11pt;
+        color: #369;
+        font-family: 'Noto Sans';
+      }
+      .text .line {
+        color: #AAA;
+        font-family: 'Noto Sans';
+        font-size: 9pt;
+        padding-right: 1em;
+      }
+      h2 {
+        font-weight: normal;
+      }
+      h2 span {
+        color: #369;
+        font-family: 'Noto Sans';
+      }
+      .selected {
+        background: #FEA;
+        padding: 1px 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2><span>#315:</span> τὸν δʼ ἄρʼ ὑπόδρα ἰδὼν προσέφη πόδας ὠκὺς Ἀχιλλεύς</h2>
+      <div class="side-by-side">
+        <div class="text">
+          <div class="ref">Il.1.148</div>
+          <span class="line">145</span> ἢ Αἴας ἢ Ἰδομενεὺς ἢ δῖος Ὀδυσσεὺς<br>
+          <span class="line">146</span> ἠὲ σὺ Πηλεΐδη πάντων ἐκπαγλότατʼ ἀνδρῶν,<br>
+          <span class="line">147</span> ὄφρʼ ἥμιν ἑκάεργον ἱλάσσεαι ἱερὰ ῥέξας.<br>
+          <span class="line">148</span> <span class="selected">τὸν δʼ ἄρʼ ὑπόδρα ἰδὼν προσέφη πόδας ὠκὺς Ἀχιλλεύς·</span><br>
+          <span class="line">149</span> ὤ μοι ἀναιδείην ἐπιειμένε κερδαλεόφρον<br>
+          <span class="line">150</span> πῶς τίς τοι πρόφρων ἔπεσιν πείθηται Ἀχαιῶν<br>
+          <span class="line">151</span> ἢ ὁδὸν ἐλθέμεναι ἢ ἀνδράσιν ἶφι μάχεσθαι;<br>
+        </div>
+        <div class="text">
+          <div class="ref">Il.22.260</div>
+          <span class="line">257</span> δώῃ καμμονίην, σὴν δὲ ψυχὴν ἀφέλωμαι·<br>
+          <span class="line">258</span> ἀλλʼ ἐπεὶ ἄρ κέ σε συλήσω κλυτὰ τεύχεʼ Ἀχιλλεῦ<br>
+          <span class="line">259</span> νεκρὸν Ἀχαιοῖσιν δώσω πάλιν· ὣς δὲ σὺ ῥέζειν.<br>
+          <span class="line">260</span> <span class="selected">τὸν δʼ ἄρʼ ὑπόδρα ἰδὼν προσέφη πόδας ὠκὺς Ἀχιλλεύς·</span><br>
+          <span class="line">261</span> Ἕκτορ μή μοι ἄλαστε συνημοσύνας ἀγόρευε·<br>
+          <span class="line">262</span> ὡς οὐκ ἔστι λέουσι καὶ ἀνδράσιν ὅρκια πιστά,<br>
+          <span class="line">263</span> οὐδὲ λύκοι τε καὶ ἄρνες ὁμόφρονα θυμὸν ἔχουσιν,<br>
+        </div>
+        <div class="text">
+          <div class="ref">Il.24.559</div>
+          <span class="line">556</span> πολλά, τά τοι φέρομεν· σὺ δὲ τῶνδʼ ἀπόναιο, καὶ ἔλθοις<br>
+          <span class="line">557</span> σὴν ἐς πατρίδα γαῖαν, ἐπεί με πρῶτον ἔασας<br>
+          <span class="line">558</span> αὐτόν τε ζώειν καὶ ὁρᾶν φάος ἠελίοιο.<br>
+          <span class="line">559</span> <span class="selected">τὸν δʼ ἄρʼ ὑπόδρα ἰδὼν προσέφη πόδας ὠκὺς Ἀχιλλεύς·</span><br>
+          <span class="line">560</span> μηκέτι νῦν μʼ ἐρέθιζε γέρον· νοέω δὲ καὶ αὐτὸς<br>
+          <span class="line">561</span> Ἕκτορά τοι λῦσαι, Διόθεν δέ μοι ἄγγελος ἦλθε<br>
+          <span class="line">562</span> μήτηρ, ἥ μʼ ἔτεκεν, θυγάτηρ ἁλίοιο γέροντος.<br>
+        </div>
+      </div>
+      <div id="drawing" class="svg"></div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.6/svg.min.js"></script>
+    <script src="ngrams.js"></script>
+    <script>
+      var draw = SVG('drawing').size(1200, 1000);
+      var width = 50;
+      var gutter = 5;
+      var top_margin = 20;
+      for (var i = 0; i < book_lengths.length; i++) {
+        var l = book_lengths[i];
+        draw.text((i + 1).toString()).move((i + 0.5) * width - (gutter / 2), 0).attr({ stroke: '#CCC'}).font('anchor', 'middle');
+        draw.rect(width - gutter, l).move(i * width, top_margin - 0.5).attr({ fill: '#F0F0F0'});
+      }
+      for (var i = 0; i < ngram_offsets.length; i++) {
+        var n = ngram_offsets[i];
+        var ngram_id = n[0];
+        var ngram_length = n[1];
+        var start_book = n[2];
+        var start_line = n[3];
+        var start_offset = n[4];
+        var end_book = n[5];
+        var end_line = n[6];
+        var end_offset = n[7];
+        if (ngram_id == "315") {
+          if (start_line == end_line) {
+            var y = top_margin + (start_line - 1);
+            var sx = (start_book - 1) * width + start_offset * (width - gutter) / 1000;
+            var ex = (start_book - 1) * width + end_offset * (width - gutter) / 1000;
+            draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+          } else if (start_line + 1 == end_line) {
+            var y = top_margin + (start_line - 1);
+            var sx = (start_book - 1) * width + start_offset * (width - gutter) / 1000;
+            var ex = (start_book - 1) * width + (width - gutter);
+            draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+            var y = top_margin + (end_line - 1);
+            var sx = (start_book - 1) * width + 0;
+            var ex = (start_book - 1) * width + end_offset * (width - gutter) / 1000;
+            draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+          } else {
+            var y = top_margin + (start_line - 1);
+            var sx = (start_book - 1) * width + start_offset * (width - gutter) / 1000;
+            var ex = (start_book - 1) * width + (width - gutter);
+            draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+            var y = top_margin + (end_line - 1);
+            var sx = (start_book - 1) * width + 0;
+            var ex = (start_book - 1) * width + end_offset * (width - gutter) / 1000;
+            draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+            for (var y = top_margin + start_line; y < top_margin + (end_line - 1); y++) {
+              var sx = (start_book - 1) * width + 0;
+              var ex = (start_book - 1) * width + (width - gutter);
+              draw.line(sx, y, ex, y).stroke({ width: 1}).addClass('nlength-' + ngram_length).addClass('ngram-' + ngram_id).addClass('ngram');
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
