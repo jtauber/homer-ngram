@@ -65,9 +65,9 @@ Display.prototype = {
 
         // on first line, draw from start_offset to end of line
         this.drawLine(start_book, start_line, start_offset, 1000, ngram_id, ngram_length);
-        // on line line, draw from start of line to end_offset
+        // on last line, draw from start of line to end_offset
         this.drawLine(start_book, end_line, 0, end_offset, ngram_id, ngram_length);
-        // now draw full width for lines in the middle
+        // then draw full width for all lines in the middle
         for (var line = start_line + 1; line < end_line; line++) {
           this.drawLine(start_book, line, 0, 1000, ngram_id, ngram_length);
 
