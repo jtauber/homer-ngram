@@ -1,3 +1,10 @@
 .ngram {
   stroke: #CCC;
 }
+.book {
+  fill: #F0F0F0;
+}
+.book-num {
+  stroke: #CCC;
+  text-anchor: middle;
+}
