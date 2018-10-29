@@ -49,30 +49,14 @@ Display.prototype = {
       var end_line = n[6];
       var end_offset = n[7];
 
-      if (start_line == end_line) {  // if n-gram is on a single line...
-
-        // just draw from start_offset to end_offset on that line
-        this.drawLine(start_book, start_line, start_offset, end_offset, ngram_id, ngram_length);
-
-      } else if (start_line + 1 == end_line) {  // if n-gram is on two lines...
-
-        // on first line, draw from start_offset to end of line
-        this.drawLine(start_book, start_line, start_offset, 1000, ngram_id, ngram_length);
-        // on next (last) line, draw from start of line to end_offset
-        this.drawLine(start_book, end_line, 0, end_offset, ngram_id, ngram_length);
-
-      } else {  // if n-gram is on more than two lines...
-
-        // on first line, draw from start_offset to end of line
-        this.drawLine(start_book, start_line, start_offset, 1000, ngram_id, ngram_length);
-        // on last line, draw from start of line to end_offset
-        this.drawLine(start_book, end_line, 0, end_offset, ngram_id, ngram_length);
-        // then draw full width for all lines in the middle
-        for (var line = start_line + 1; line < end_line; line++) {
-          this.drawLine(start_book, line, 0, 1000, ngram_id, ngram_length);
-
-        }
+      for (var line = start_line; line <= end_line; line++) {
+        this.drawLine(start_book, line,
+          line === start_line ? start_offset : 0,
+          line === end_line ? end_offset : 1000,
+          ngram_id, ngram_length
+        );
       }
+
     }
   }
 }
