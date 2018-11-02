@@ -1,0 +1,15 @@
+body {
+  font-family: 'Noto Serif';
+}
+h1 {
+  font-weight: normal;
+  color: #369;
+}
+.book {
+  fill: #F0F0F0;
+}
+.book-num {
+  font-family: 'Noto Sans';
+  stroke: #CCC;
+  text-anchor: middle;
+}
