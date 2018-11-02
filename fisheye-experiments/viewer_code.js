@@ -6,7 +6,8 @@ Display = function() {
   this.gutter = 5;  // space between books
   this.top_margin = 20;  // space at top before book begins
 
-  this.zoom = 2;
+  this.zoom = 3;  // how much the width of a book is zoomed on hover
+  this.duration = 50; // millisecond duration of book width animation
 
 }
 Display.prototype = {
@@ -37,27 +38,27 @@ Display.prototype = {
           for (var j = 0; j < book_lengths.length; j++) {
             if (j < this.data('num')) {
               d.book_rects[j]
-                .animate(50)
+                .animate(d.duration)
                 .move(j * d.width, d.top_margin - 0.5)
                 .width(d.width - d.gutter);
               d.book_labels[j]
-              .animate(50)
+                .animate(d.duration)
                 .move((j + 0.5) * d.width - (d.gutter / 2), 0)
             } else if (j == this.data('num')) {
               d.book_rects[j]
-                .animate(50)
+                .animate(d.duration)
                 .move(j * d.width, d.top_margin - 0.5)
                 .width(d.zoom * d.width - d.gutter);
               d.book_labels[j]
-                .animate(50)
-                .move((j + (d.zoom -1)) * d.width - (d.gutter / 2), 0)
+                .animate(d.duration)
+                .move(j * d.width + (0.5 * d.width * d.zoom) - (d.gutter / 2), 0)
             } else if (j > this.data('num')) {
               d.book_rects[j]
-                .animate(50)
+                .animate(d.duration)
                 .move((j + (d.zoom - 1)) * d.width, d.top_margin - 0.5)
                 .width(d.width - d.gutter);
               d.book_labels[j]
-                .animate(50)
+                .animate(d.duration)
                 .move((j + (d.zoom - 1) + 0.5) * d.width - (d.gutter / 2), 0)
             }
           }
