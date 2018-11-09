@@ -3,6 +3,11 @@
 import collections
 
 
+FILENAME = "../data-cleanup/iliad.txt"
+START_N = 6
+END_N = 75
+
+
 def normalise(w):
     return w.strip("·.,")
 
@@ -26,11 +31,9 @@ def ngram(it, n, norm_func=None):
         yield window
 
 
-for N in range(6, 75):
-    with open("iliad.txt") as f:
+for N in range(START_N, END_N + 1):
+    with open(FILENAME) as f:
         c = collections.Counter(ngram(f.read().split(), N, normalise))
-    d = collections.Counter()
     for t, count in c.most_common():
-        d[count] += 1
-
-    print(N, d)
+        if count > 1:
+            print(f"{N} {count} | {' '.join(t)}")
