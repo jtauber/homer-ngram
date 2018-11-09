@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 
-import re
+"""
+Converts a treebank XML file into the "ref token1 token2 token3" format used by
+other tools in this repo.
+
+To use, change the FILENAME and PREFIX.
+"""
+
 
 from lxml import etree
 
-# filename = "tlg0012.tlg001.perseus-grc1.tb.xml"
-# prefix = "Il"
 
-filename = "tlg0012.tlg002.perseus-grc1.tb.xml"
-prefix = "Od"
+# FILENAME = "tlg0012.tlg001.perseus-grc1.tb.xml"
+# PREFIX = "Il"
+
+FILENAME = "tlg0012.tlg002.perseus-grc1.tb.xml"
+PREFIX = "Od"
+
 
 prev_ref = None
-with open(filename) as f:
+with open(FILENAME) as f:
     tree = etree.parse(f)
     for sentence in tree.xpath("//sentence"):
         sentence_id = sentence.attrib["id"]
@@ -30,6 +38,7 @@ with open(filename) as f:
                     if ref != prev_ref:
                         if prev_ref:
                             print()
-                        print(f"{prefix}.{ref}", end=" ")
+                        print(f"{PREFIX}.{ref}", end=" ")
                         prev_ref = ref
                     print(lemma, end=" ")
+print()
