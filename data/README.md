@@ -4,7 +4,7 @@
 
 ## File Formats
 
-In each of these files, the first (white-space delimited) token on each line is a reference for the sequence of tokens the make up the rest of the line.
+In most of these files, the first (white-space delimited) token on each line is a reference for the sequence of tokens the make up the rest of the line.
 
 For example
 
@@ -19,6 +19,7 @@ In principle, these tokens may not be words, they could be lemmas, part-of-speec
 
 ## Files
 
+* `test*.txt` are just very short test input files
 * `iliad2.txt` is the result of running `data-cleanup/xml2line.py` on `data-cleanup/iliad.xml`
 * `odyssey2.txt` is the result of running `data-cleanup/xml2line.py` on `data-cleanup/odyssey.xml`
 * `combined2.txt` is just the concatenation of `iliad2.txt` and `odyssey2.txt`.
