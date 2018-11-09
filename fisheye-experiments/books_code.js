@@ -34,7 +34,7 @@ Display.prototype = {
         .move(i * this.width, this.top_margin - 0.5)
         .data('num', i)
         .addClass('book')
-        .on('mouseover', function() {
+        .on('mouseover', _.throttle(function() {
           for (var j = 0; j < book_lengths.length; j++) {
             if (j < this.data('num')) {
               d.book_rects[j]
@@ -62,7 +62,7 @@ Display.prototype = {
                 .move((j + (d.zoom - 1) + 0.5) * d.width - (d.gutter / 2), 0)
             }
           }
-        });
+        }, 10));
     }
   }
 }
