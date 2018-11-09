@@ -21,18 +21,14 @@ which should be read as following:
 
 The heuristic developed by Sklaviadis and myself is that the n-gram will be shown iff the naïve n-gram count > 1 AND the naïve n-gram count > the count from subgrams of repeated n+1-grams.
 
+
 ## Directories
 
-`data-cleanup/` contains raw source files and code for cleaning up and transforming those files into the format the tools will work best with.
+* `data-cleanup/` contains raw source files and code for cleaning up and transforming those files into the format the tools will work best with.
+* `data/` contains cleaned and transformed data ready for processing.
 
 
 ## Files
-
-`iliad2.txt` is the result of running `xml2line.py` (on `iliad.xml`)
-
-`odyssey2.txt` is the result of running `xml2line.py` (on `odyssey.xml`)
-
-`combined2.txt` is just the concatenation of `iliad2.txt` and `odyssey2.txt`.
 
 `output.txt` is the output of running `ngram2.py` on `iliad.txt`.
 
