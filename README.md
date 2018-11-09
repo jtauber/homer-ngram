@@ -21,13 +21,15 @@ which should be read as following:
 
 The heuristic developed by Sklaviadis and myself is that the n-gram will be shown iff the naïve n-gram count > 1 AND the naïve n-gram count > the count from subgrams of repeated n+1-grams.
 
+## Directories
+
+`data-cleanup/` contains raw source files and code for cleaning up and transforming those files into the format the tools will work best with.
+
+
 ## Files
 
-`iliad.txt` comes from https://scaife.perseus.org/library/passage/urn:cts:greekLit:tlg0012.tlg001.perseus-grc2:1-24/text/
-`iliad.xml` comes from https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg001/tlg0012.tlg001.perseus-grc2.xml
 `iliad2.txt` is the result of running `xml2line.py` (on `iliad.xml`)
 
-`odyssey.xml` comes from https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg002/tlg0012.tlg002.perseus-grc2.xml
 `odyssey2.txt` is the result of running `xml2line.py` (on `odyssey.xml`)
 
 `combined2.txt` is just the concatenation of `iliad2.txt` and `odyssey2.txt`.
@@ -36,7 +38,6 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 
 `iliad2.txt` and `odyssey2.txt` have line references marked. `ngram3.py` is similar to (although slower than) `ngram2.py` except it can track these references.
 
-
 `output-iliad.txt` is the output of running `ngram3.py` on `iliad2.txt`.
 
 `output-odyssey.txt` is the output of running `ngram3.py` on `odyssey2.txt`.
@@ -44,11 +45,6 @@ The heuristic developed by Sklaviadis and myself is that the n-gram will be show
 `output-combined.txt` is the output of running `ngram3.py` on `combined2.txt`.
 
 `output-intersection.txt` is the lines of `output-combined.txt` with both Iliad and Odyssey references.
-
-
-`tlg0012.tlg001.perseus-grc1.tb.xml` and `tlg0012.tlg002.perseus-grc1.tb.xml` come from https://github.com/PerseusDL/treebank_data/tree/master/v2.1/Greek
-
-`tb2line.py` converts the Treebank XML into a line based format.
 
 `iliad-lemma.txt` is the lemmatised Iliad by line.
 
