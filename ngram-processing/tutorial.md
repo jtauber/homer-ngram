@@ -55,14 +55,14 @@ The only different in `ngram.py` is we support the passing in of a normalisation
 So our function signature becomes
 
 ```
-ngram(it, n, norm_func=None)
+ngram(it, n, norm_func=identity)
 ```
 
 and we handle the default case with
 
 ```
-if norm_func is None:
-    norm_func = lambda w: w  # identity function
+def identity(w):
+    return w
 ```
 
 We then call this function on the current token before adding it to the window:
