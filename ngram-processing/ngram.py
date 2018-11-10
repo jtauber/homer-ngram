@@ -12,14 +12,15 @@ def normalise(w):
     return w.strip("·.,")
 
 
-def ngram(it, n, norm_func=None):
+def identity(w):
+    return w
+
+
+def ngram(it, n, norm_func=identity):
     """
     generates the n-grams (for given `n`) for a given iterator `it`, calling
     the optional given `norm_func` function on each item as well.
     """
-    if norm_func is None:
-        norm_func = lambda w: w  # identity function
-
     window = ("*",) * n
 
     for current in it:
