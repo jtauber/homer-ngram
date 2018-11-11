@@ -32,23 +32,23 @@ def identity(w):
     return w
 
 
-def ngram(it, n, norm_func=identity, pad=False):
+def ngram(tokens, n, norm_func=identity, pad=False):
     """
-    generates the n-grams (for given `n`) for a given iterator `it`, calling
-    the optional given `norm_func` function on each item as well.
+    generates the n-grams (for given `n`) for a given iterator `tokens`,
+    calling the optional given `norm_func` function on each item as well.
     If `pad` is true the first n-1 and last n-1 n-grams will be padded.
     """
-    window = ("*",) * n
+    window = ["*"] * n
 
-    for current in it:
-        window = window[1:] + (norm_func(current),)
+    for token in tokens:
+        window = window[1:] + [norm_func(token)]
         if pad or "*" not in window:
-            yield window
+            yield tuple(window)
 
     if pad:
         for i in range(n):
-            window = window[1:] + ("*",)
-            yield window
+            window = window[1:] + ["*"]
+            yield tuple(window)
 
 
 if __name__ == "__main__":
