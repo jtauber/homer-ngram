@@ -1,11 +1,27 @@
 #!/usr/bin/env python3
 
+"""
+Find repeating n-grams like `ngram3.py` but also returns offsets of tokens
+within the references.
+
+```
+$ cat ../data/test3.txt
+1 A B C
+2 D A B
+3 C A B
+4 C D
+$ ./ngram4.py 2-5 ../data/test3.txt
+4 2 0 | 1:0/3-2:0/3 3:1/3-4:1/2 | A B C D
+3 3 2 | 1:0/3-1:2/3 2:1/3-3:0/3 3:1/3-4:0/2 | A B C
+```
+
+where `1:0/3-2:0/3` (for example) means this n-gram goes from token `0` out of
+`3` in ref `1` (the first `A`) though to token `0` out of `3` in ref `2` (the
+first `D`).
+"""
+
+import argparse
 import collections
-
-
-FILENAME = "../data/iliad2.txt"
-START_N = 4
-END_N = 100
 
 
 def normalise(w):
@@ -16,69 +32,102 @@ def identity(w):
     return w
 
 
-def ngram(it, n, norm_func=identity, pad=False):
+def ngram(tokens, n, norm_func=identity, pad=False):
     """
-    generates the n-grams (for given `n`) for a given iterator `it`, calling
-    the optional given `norm_func` function on each item as well.
+    generates the n-grams (for given `n`) for a given iterator `tokens`,
+    calling the optional given `norm_func` function on each item as well.
     If `pad` is true the first n-1 and last n-1 n-grams will be padded.
     """
-    window = ("*",) * n
+    window = ["*"] * n
 
-    for current in it:
-        window = window[1:] + (norm_func(current),)
+    for token in tokens:
+        window = window[1:] + [norm_func(token)]
         if pad or "*" not in window:
-            yield window
+            yield tuple(window)
 
     if pad:
         for i in range(n):
-            window = window[1:] + ("*",)
-            yield window
+            window = window[1:] + ["*"]
+            yield tuple(window)
 
 
-def ngram_with_ref(it, n, norm_func=identity):
-    ref_window = ("*",) * n
-    item_window = ("*",) * n
+def ngram_with_ref(tokens_with_ref, n, norm_func=identity):
+    """
+    generates the n-grams (for given `n`) for a given iterator
+    `tokens_with_ref` (which iterates over pairs of `(ref, token)`).
+    The optional given `norm_func` function is called on each token.
 
-    for ref, word_offset, line_length, item in it:
-        ref_window = ref_window[1:] + ((ref, word_offset, line_length),)
-        item_window = item_window[1:] + (norm_func(item),)
-        if "*" not in item_window:
-            start_ref = (
-                ref_window[0][0] + ":" +
-                str(ref_window[0][1]) + "/" + str(ref_window[0][2]))
-            end_ref = (
-                ref_window[-1][0] + ":" +
-                str(ref_window[-1][1]) + "/" + str(ref_window[-1][2]))
-            yield start_ref, end_ref, item_window
+    Each result yielded by this generator is of the form
+    `((start_ref, end_ref), ngram)`.
+    """
+
+    ref_window = ["*"] * n
+    token_window = ["*"] * n
+
+    for ref, token in tokens_with_ref:
+        ref_window = ref_window[1:] + [ref]
+        token_window = token_window[1:] + [norm_func(token)]
+        if "*" not in token_window:
+            yield (ref_window[0], ref_window[-1]), tuple(token_window)
 
 
 def deref(f):
+    """
+    takes an iterator over lines consisting of a reference followed by
+    whitespace-separated tokens and yields `("{ref}:{offset}/{length}", token)`
+    for each token.
+    """
     for line in f:
         ref, content = line.strip().split(maxsplit=1)
         tokens = content.split()
-        line_length = len(tokens)
-        for word_offset, item in enumerate(tokens):
-            yield ref, word_offset, line_length, item
+        length = len(tokens)
+        for offset, token in enumerate(tokens):
+            yield f"{ref}:{offset}/{length}", token
 
 
-ngrams = {}
-subgrams = {}
+if __name__ == "__main__":
 
-# N descends from END_N to START_N inclusive
-for N in range(END_N, START_N - 1, -1):
-    with open(FILENAME) as f:
-        for start_ref, end_ref, seq in ngram_with_ref(deref(f), N, normalise):
-            ngrams.setdefault(N, {}).setdefault(seq, []).append(
-                (start_ref, end_ref))
-    subgrams[N - 1] = collections.Counter()
-    for X, refs in ngrams[N].items():
-        naive_count = len(refs)
-        subgram_count = subgrams.get(N, {}).get(X, 0)
-        if naive_count > 1 and naive_count > subgram_count:
-            ref_list = " ".join(
-                f"{start_ref}-{end_ref}" for start_ref, end_ref in refs)
-            tokens = " ".join(X)
-            print(f"{N} {naive_count} {subgram_count} | {ref_list} | {tokens}")
-        if naive_count > 1:
-            for Y in ngram(X, N - 1):
-                subgrams[N - 1][Y] += naive_count
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("range", help="n-gram range to calc, e.g. 6-100")
+    argparser.add_argument("filename")
+
+    args = argparser.parse_args()
+
+    filename = args.filename
+    start_n, end_n = (int(arg) for arg in args.range.split("-"))
+
+    higher_subgram_counter = collections.Counter()
+
+    # n descends from end_n to start_n inclusive
+    for n in range(end_n, start_n - 1, -1):
+
+        # In ngram2.py we had a `ngram_counter` that merely counted n-grams
+        # Here we maintain a list of references for each n-gram. The count
+        # is then just the lngth of this list.
+
+        # keys are ngram_tokens, values are lists of (start_ref, end_ref)
+        ngram_refs = collections.defaultdict(list)
+
+        with open(filename) as f:
+            for ref_range, ngram_tokens in ngram_with_ref(
+                deref(f), n, normalise
+            ):
+                ngram_refs[ngram_tokens].append(ref_range)
+
+        subgram_counter = collections.Counter()
+
+        for ngram_tokens, refs in ngram_refs.items():
+            naive_count = len(refs)
+            subgram_count = higher_subgram_counter[ngram_tokens]
+
+            if naive_count > 1 and naive_count > subgram_count:
+                counts = f"{n} {naive_count} {subgram_count}"
+                ref_list = " ".join(f"{r[0]}-{r[1]}" for r in refs)
+                tokens = " ".join(ngram_tokens)
+                print(f"{counts} | {ref_list} | {tokens}")
+
+            if naive_count > 1:
+                for subgram_tokens in ngram(ngram_tokens, n - 1):
+                    subgram_counter[subgram_tokens] += naive_count
+
+        higher_subgram_counter = subgram_counter
