@@ -67,8 +67,9 @@ if __name__ == "__main__":
 
     higher_subgram_counter = collections.Counter()
 
-    # N descends from END_N to START_N inclusive
+    # n descends from end_n to start_n inclusive
     for n in range(end_n, start_n - 1, -1):
+
         ngram_counter = collections.Counter(ngram(tokens, n, normalise))
         subgram_counter = collections.Counter()
 
@@ -79,7 +80,9 @@ if __name__ == "__main__":
             # before) AND the naïve n-gram count is strictly great than the
             # count from subgrams of repeated n+1-grams.
             if naive_count > 1 and naive_count > subgram_count:
-                print(f"{n} {naive_count} {subgram_count} | {' '.join(ngram_tokens)}")
+                counts = f"{n} {naive_count} {subgram_count}"
+                tokens = " ".join(ngram_tokens)
+                print(f"{counts} | {tokens}")
 
             if naive_count > 1:
                 for subgram_tokens in ngram(ngram_tokens, n - 1):
