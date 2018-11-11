@@ -66,8 +66,10 @@ if __name__ == "__main__":
     filename = args.filename
     start_n, end_n = (int(arg) for arg in args.range.split("-"))
 
-    # this is quite inefficient in that it goes over the file each time but,
+    with open(filename) as f:
+        tokens = f.read().split()
+
+    # this is quite inefficient in that it goes over the tokens each time but,
     # for now, it's fast enough for our purposes
     for n in range(start_n, end_n + 1):
-        with open(filename) as f:
-            print_repeated_ngrams(n, f.read().split(), normalise)
+        print_repeated_ngrams(n, tokens, normalise)
