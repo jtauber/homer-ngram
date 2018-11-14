@@ -16,7 +16,7 @@
         width: 1200px;
         margin: 50px auto;
       }
-      ol.verse > div {
+      ol.verse li div {
         word-spacing: 0.3em;
       }
       li {
@@ -71,7 +71,7 @@
 
       /* show foot and syllable divisions */
 
-      body.foot-syll ol.verse > div {
+      body.foot-syll ol.verse li div {
         word-spacing: 0.5em;
       }
       body.foot-syll span.foot {
@@ -96,10 +96,6 @@
       }
 
       /* align feet */
-
-      body.align-feet ol.verse > div {
-        word-spacing: 1em;
-      }
 
       body.align-feet li > div {
         display: flex;
@@ -152,7 +148,7 @@
       }
     </style>
   </head>
-  <body class="foot-syll syll-length align-feet">
+  <body>
     <div class="container">
 
       <div class="toggles">
