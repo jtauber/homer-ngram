@@ -12,9 +12,16 @@
       body {
         font-family: "Noto Serif", serif;
       }
+      p {
+        font-family: "Noto Sans", sans-serif;
+        color: #689;
+      }
       div.container {
         width: 1200px;
         margin: 50px auto;
+      }
+      ol.verse {
+        margin-top: 100px;
       }
       ol.verse li div {
         word-spacing: 0.3em;
@@ -60,7 +67,6 @@
         padding: 10px 20px;
         font-family: "Noto Sans", sans-serif;
         color: #689;
-        margin-bottom: 100px;
       }
       div.toggles h2 {
         margin: 0;
@@ -212,7 +218,6 @@
   </head>
   <body>
     <div class="container">
-
       <div class="toggles">
         <h2>Toggles</h2>
         <div class="toggle" data-target="foot-syll"><span class="foot-syll">&#x25CF;</span>&nbsp;show foot and syllable divisions</div>
@@ -220,6 +225,7 @@
         <div class="toggle" data-target="align-feet"><span class="align-feet">&#x25CF;</span>&nbsp;align feet and syllables</div>
         <div class="toggle" data-target="hide-words"><span class="hide-words">&#x25CF;</span>&nbsp;hide-words</div>
       </div>
+      <p>Hover over a line to see other lines with same metrical pattern.</p>
 
       <ol class="verse">
         <li class="line aabaab" data-meter="aabaab">
