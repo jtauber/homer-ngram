@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iliad 1.1–1.10</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <style>
+
+      /* defaults */
+
+      body {
+        font-family: "Noto Serif", serif;
+      }
+      div.container {
+        width: 1200px;
+        margin: 50px auto;
+      }
+      ol.verse > div {
+        word-spacing: 0.3em;
+      }
+      li {
+        margin-top: 0.5em;
+        font-family: "Noto Sans", sans-serif;
+        color: #ABC;
+      }
+      li > div {
+        font-family: "Noto Serif", serif;
+        font-size: 12pt;
+        color: #000;
+      }
+
+      /* toggles */
+      div.toggles {
+        background-color: #F7F7F7;
+        padding: 5px 10px;
+        font-family: "Noto Sans", sans-serif;
+        color: #689;
+        margin-bottom: 100px;
+      }
+      div.toggles h2 {
+        margin: 0;
+        font-size: 12pt;
+        text-transform: uppercase;
+        color: #689;
+      }
+      div.toggle {
+        cursor: pointer;
+      }
+      div.toggle > span.foot-syll,
+      div.toggle > span.syll-length,
+      div.toggle > span.align-feet,
+      div.toggle > span.hide-words
+      {
+        color: #CCC;
+      }
+      body.foot-syll div.toggle > span.foot-syll,
+      body.syll-length div.toggle > span.syll-length,
+      body.align-feet div.toggle > span.align-feet,
+      body.hide-words div.toggle > span.hide-words
+      {
+        color: #000;
+      }
+
+      span.foot {
+        box-sizing: border-box;
+      }
+      span.syll {
+        box-sizing: border-box;
+      }
+
+      /* show foot and syllable divisions */
+
+      body.foot-syll ol.verse > div {
+        word-spacing: 0.5em;
+      }
+      body.foot-syll span.foot {
+        border-left: 2px solid black;
+      }
+      body.foot-syll span.syll {
+        padding: 1px 3px;
+      }
+      body.foot-syll span.syll:first-child {
+        border-left: 1px solid transparent;
+      }
+      body.foot-syll span.syll:not(:first-child) {
+        border-left: 1px dotted black;
+      }
+
+      /* show syllable length */
+      body.syll-length span.syll.long {
+        background-color: #CCC;
+      }
+      body.syll-length span.syll:not(.long) {
+        background-color: #EEE;
+      }
+
+      /* align feet */
+
+      body.align-feet ol.verse > div {
+        word-spacing: 1em;
+      }
+
+      body.align-feet li > div {
+        display: flex;
+      }
+      body.align-feet span.foot {
+        width: 16.66%;
+        display: flex;
+      }
+      body.align-feet span.syll {
+        padding: 1px 3px;
+      }
+      body.align-feet:not(.foot-syll) span.foot {
+        border-left: 2px solid transparent;
+      }
+      body.align-feet.syll-length:not(.foot-syll) span.foot {
+        border-left: 2px solid #CCC;
+      }
+      body.align-feet:not(.foot-syll) span.syll {
+        border-left: 1px solid transparent;
+      }
+      body.align-feet span.syll.long {
+        width: 50%;
+      }
+      body.align-feet span.syll:not(.long) {
+        width: 25%;
+      }
+
+      body.align-feet span.syll.l {
+        text-align: left;
+      }
+      body.align-feet span.syll.r {
+        text-align: right;
+      }
+      body.align-feet span.syll,
+      body.align-feet span.syll.c
+      {
+        text-align: center;
+      }
+      body.align-feet span.syll.l::before,
+      body.align-feet span.syll.r::after,
+      body.align-feet span.syll.c::before,
+      body.align-feet span.syll.c::after
+      {
+        content: "-";
+      }
+
+      /* mode 4 */
+      body.hide-words span.syll {
+        color: transparent;
+      }
+    </style>
+  </head>
+  <body class="foot-syll syll-length align-feet">
+    <div class="container">
+
+      <div class="toggles">
+        <h2>Toggles</h2>
+        <div class="toggle" data-target="foot-syll"><span class="foot-syll">&#x25CF;</span>&nbsp;show foot and syllable divisions</div>
+        <div class="toggle" data-target="syll-length"><span class="syll-length">&#x25CF;</span>&nbsp;show syllable length</div>
+        <div class="toggle" data-target="align-feet"><span class="align-feet">&#x25CF;</span>&nbsp;align feet and syllables</div>
+        <div class="toggle" data-target="hide-words"><span class="hide-words">&#x25CF;</span>&nbsp;hide-words</div>
+      </div>
+
+      <ol class="verse">
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">μῆ</span><span class="syll l">νιν</span>
+            <span class="syll r">ἄ</span></span><span class="foot"><span class="syll long c">ει</span><span class="syll l">δε</span>
+            <span class="syll r">θε</span></span><span class="foot"><span class="syll long l">ὰ</span>
+            <span class="syll long r">Πη</span></span><span class="foot"><span class="syll long c">λη</span><span class="syll c">ϊ</span><span class="syll c">ά</span></span><span class="foot"><span class="syll long l">δεω</span>
+            <span class="syll r">Ἀ</span><span class="syll c">χι</span></span><span class="foot"><span class="syll long c">λῆ</span><span class="syll long l">ος</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">οὐ</span><span class="syll c">λο</span><span class="syll c">μέ</span></span><span class="foot"><span class="syll long l">νην,</span>
+            <span class="syll long">ἣ</span></span>
+            <span class="foot"><span class="syll long r">μυ</span><span class="syll l">ρί’</span>
+            <span class="syll r">Ἀ</span></span><span class="foot"><span class="syll long c">χαι</span><span class="syll long l">οῖς</span></span>
+            <span class="foot"><span class="syll long r">ἄλ</span><span class="syll l">γε’</span>
+            <span class="syll r">ἔ</span></span><span class="foot"><span class="syll long c">θη</span><span class="syll long l">κε,</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">πολ</span><span class="syll long l">λὰς</span></span>
+            <span class="foot"><span class="syll long r">δ’ἰφ</span><span class="syll long c">θί</span></span><span class="foot"><span class="syll long l">μους</span>
+            <span class="syll long r">ψυ</span></span><span class="foot"><span class="syll long l">χὰς</span>
+            <span class="syll r">Ἄ</span><span class="syll">ϊ</span></span><span class="foot"><span class="syll long l">δι</span>
+            <span class="syll r">προ</span><span class="syll c">ΐ</span></span><span class="foot"><span class="syll long c">α</span><span class="syll long l">ψεν</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">ἡ</span><span class="syll long c">ρώ</span></span><span class="foot"><span class="syll long l">ων,</span>
+            <span class="syll long r">αὐ</span></span><span class="foot"><span class="syll long l">τοὺς</span>
+            <span class="syll">δὲ</span>
+            <span class="syll r">ἑ</span></span><span class="foot"><span class="syll long c">λώ</span><span class="syll">ρι</span><span class="syll l">α</span></span>
+            <span class="foot"><span class="syll long r">τεῦ</span><span class="syll l">χε</span>
+            <span class="syll r">κύ</span></span><span class="foot"><span class="syll long c">νεσ</span><span class="syll long l">σιν</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">οἰ</span><span class="syll long c">ω</span></span><span class="foot"><span class="syll long c">νοῖ</span><span class="syll l">σί</span>
+            <span class="syll">τε</span></span>
+            <span class="foot"><span class="syll long r">πᾶ</span><span class="syll l">σι,</span>
+            <span class="syll r">Δι</span></span><span class="foot"><span class="syll long l">ὸς</span>
+            <span class="syll r">δ’ἐ</span><span class="syll c">τε</span></span><span class="foot"><span class="syll long c">λεί</span><span class="syll c">ε</span><span class="syll l">το</span></span>
+            <span class="foot"><span class="syll long r">βου</span><span class="syll long l">λή,</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long">ἐξ</span>
+            <span class="syll long">οὗ</span></span>
+            <span class="foot"><span class="syll long">δὴ</span>
+            <span class="syll long">τὰ</span></span>
+            <span class="foot"><span class="syll long r">πρῶ</span><span class="syll l">τα</span>
+            <span class="syll r">δι</span></span><span class="foot"><span class="syll long c">α</span><span class="syll long c">στή</span></span><span class="foot"><span class="syll long l">την</span>
+            <span class="syll r">ἐ</span><span class="syll c">ρί</span></span><span class="foot"><span class="syll long c">σαν</span><span class="syll long l">τε</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">Ἀ</span><span class="syll c">τρε</span><span class="syll c">ΐ</span></span><span class="foot"><span class="syll long l">δης</span>
+            <span class="syll">τε</span>
+            <span class="syll r">ἄ</span></span><span class="foot"><span class="syll long l">ναξ</span>
+            <span class="syll long r">ἀν</span></span><span class="foot"><span class="syll long l">δρῶν</span>
+            <span class="syll long">καὶ</span></span>
+            <span class="foot"><span class="syll long r">δῖ</span><span class="syll l">ος</span>
+            <span class="syll r">Ἀ</span></span><span class="foot c"><span class="syll long c">χιλ</span><span class="syll long l">λεύς.</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long">τίς</span>
+            <span class="syll long">τ’ἄρ</span></span>
+            <span class="foot"><span class="syll long r">σφω</span><span class="syll l">ε</span>
+            <span class="syll r">θε</span></span><span class="foot"><span class="syll long l">ῶν</span>
+            <span class="syll r">ἔ</span><span class="syll c">ρι</span></span><span class="foot"><span class="syll long l">δι</span>
+            <span class="syll r">ξυ</span><span class="syll c">νέ</span></span><span class="foot"><span class="syll long c">η</span><span class="syll l">κε</span>
+            <span class="syll r">μά</span></span><span class="foot"><span class="syll long c">χεσ</span><span class="syll long l">θαι;</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">Λη</span><span class="syll long l">τοῦς</span></span>
+            <span class="foot"><span class="syll long">καὶ</span>
+            <span class="syll r">Δι</span><span class="syll l">ὸς</span></span>
+            <span class="foot"><span class="syll long r">υἱ</span><span class="syll l">ός·</span>
+            <span class="syll">ὃ</span></span>
+            <span class="foot"><span class="syll long">γὰρ</span>
+            <span class="syll r">βα</span><span class="syll c">σι</span></span><span class="foot"><span class="syll long c">λῆ</span><span class="syll l">ϊ</span>
+            <span class="syll r">χο</span></span><span class="foot"><span class="syll long c">λω</span><span class="syll long l">θεὶς</span></span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <span class="foot"><span class="syll long r">νοῦ</span><span class="syll l">σον</span>
+            <span class="syll r">ἀ</span></span><span class="foot"><span class="syll long l">νὰ</span>
+            <span class="syll r">στρα</span><span class="syll l">τὸν</span></span>
+            <span class="foot"><span class="syll long r">ὄρ</span><span class="syll l">σε</span>
+            <span class="syll r">κα</span></span><span class="foot"><span class="syll long l">κήν,</span>
+            <span class="syll r">ὀ</span><span class="syll c">λέ</span></span><span class="foot"><span class="syll long c">κον</span><span class="syll l">το</span>
+            <span class="syll r">δὲ</span></span><span class="foot"><span class="syll long c">λα</span><span class="syll long l">οί,</span></span>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+      $(function() {
+        $(".toggle").on("click", function() {
+          $("body").toggleClass($(this).data("target"));
+          return false;
+        });
+      });
+    </script>
+  </body>
+</html>
