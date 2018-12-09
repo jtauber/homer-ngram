@@ -31,7 +31,7 @@ with open("../data/iliad2.txt") as f:
         ref, tokens = line.strip().split(maxsplit=1)
         work, passage_ref = ref.split(".", maxsplit=1)
         REF_INDEX[ILIAD][passage_ref] = len(LINES[ILIAD])
-        LINES[ILIAD].append((ref, tokens))
+        LINES[ILIAD].append((ref.split(".", maxsplit=1)[1], tokens))
 
 # adds the Odyssey to the LINES and REF_INDEX datastructures
 with open("../data/odyssey2.txt") as f:
@@ -39,7 +39,7 @@ with open("../data/odyssey2.txt") as f:
         ref, tokens = line.strip().split(maxsplit=1)
         work, passage_ref = ref.split(".", maxsplit=1)
         REF_INDEX[ODYSSEY][passage_ref] = len(LINES[ODYSSEY])
-        LINES[ODYSSEY].append((ref, tokens))
+        LINES[ODYSSEY].append((ref.split(".", maxsplit=1)[1], tokens))
 
 
 # get lines given CTS URN
