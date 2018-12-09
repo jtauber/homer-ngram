@@ -9,3 +9,4 @@
 * `data/` contains cleaned and transformed data ready for processing.
 * `ngram-processing/` contains code for calculating the repeated n-grams in a token list
 * `ngram-data/` contains the results of running various n-gram scripts on the data
+* `home-server` contains a lightweight server that returns lines of the Iliad or Odyssey in JSON given a CTN URN

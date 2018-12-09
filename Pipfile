@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 lxml = "*"
+flask = "*"
 
 [dev-packages]
 "flake8" = "*"
