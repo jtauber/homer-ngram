@@ -1,3 +1,5 @@
+import collections
+
 from flask import Flask
 from flask import abort, jsonify
 app = Flask(__name__)
@@ -10,36 +12,26 @@ ODYSSEY = "urn:cts:greekLit:tlg0012.tlg002.perseus-grc2"
 # maps a CTS URN for an edition to a list of lines
 # e.g. LINES[ILIAD][1000] will store the 1000th line of the Iliad or,
 #   actually, (ref, line)
-LINES = {
-    ILIAD: [],
-    ODYSSEY: [],
-}
+LINES = collections.defaultdict(list)
 
 # maps a CTS URN for an edition to a dictionary that maps book.line references
 #   to an index into LINES[CTS_URN]
 # e.g. REF_INDEX[ILIAD["2.389"]] = 1000 because 2.389 is
 #   LINES[ILIAD][1000]
-REF_INDEX = {
-    ILIAD: {},
-    ODYSSEY: {},
-}
+REF_INDEX = collections.defaultdict(dict)
 
 
-# adds the Iliad to the LINES and REF_INDEX datastructures
-with open("../data/iliad2.txt") as f:
-    for line in f:
-        ref, tokens = line.strip().split(maxsplit=1)
-        work, passage_ref = ref.split(".", maxsplit=1)
-        REF_INDEX[ILIAD][passage_ref] = len(LINES[ILIAD])
-        LINES[ILIAD].append((ref.split(".", maxsplit=1)[1], tokens))
+def load(filename, work_urn):
+    with open(filename) as f:
+        for line in f:
+            ref, tokens = line.strip().split(maxsplit=1)
+            work, passage_ref = ref.split(".", maxsplit=1)
+            REF_INDEX[work_urn][passage_ref] = len(LINES[work_urn])
+            LINES[work_urn].append((ref.split(".", maxsplit=1)[1], tokens))
 
-# adds the Odyssey to the LINES and REF_INDEX datastructures
-with open("../data/odyssey2.txt") as f:
-    for line in f:
-        ref, tokens = line.strip().split(maxsplit=1)
-        work, passage_ref = ref.split(".", maxsplit=1)
-        REF_INDEX[ODYSSEY][passage_ref] = len(LINES[ODYSSEY])
-        LINES[ODYSSEY].append((ref.split(".", maxsplit=1)[1], tokens))
+
+load("../data/iliad2.txt", ILIAD)
+load("../data/odyssey2.txt", ODYSSEY)
 
 
 # get lines given CTS URN
