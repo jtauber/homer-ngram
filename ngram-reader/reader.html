@@ -9,16 +9,13 @@
     <main id="app">
       <h2><span>#{{ ngramId }}:</span> {{ ngramContent }}</h2>
       <div class="side-by-side">
-        <div class="text" v-for="instance in ngramInstances">
-          <div class="ref">{{ instance.book }}.{{ instance.ref }}</div>
-          <span v-for="line in instance.lines">
-            <span class="line">{{ line[0].split('.')[1] }}</span>
-            <span :class="{ selected: line[0] == instance.ref }">{{ line[1] }}</span>
-            <br>
-          </span>
+        <div v-for="nref in ngramRefs">
+          <frag :nref='nref'></frag>
         </div>
+      </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
