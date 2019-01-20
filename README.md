@@ -7,6 +7,6 @@
 
 * `data-cleanup/` contains raw source files and code for cleaning up and transforming those files into the format the tools will work best with.
 * `data/` contains cleaned and transformed data ready for processing.
-* `ngram-processing/` contains code for calculating the repeated n-grams in a token list
-* `ngram-data/` contains the results of running various n-gram scripts on the data
-* `home-server` contains a lightweight server that returns lines of the Iliad or Odyssey in JSON given a CTN URN
+* `ngram-processing/` contains code for calculating the repeated n-grams in a token list.
+* `ngram-data/` contains the results of running various n-gram scripts on the data.
+* `homer-server/` contains a lightweight server that returns lines of the Iliad or Odyssey in JSON given a CTS URN.
