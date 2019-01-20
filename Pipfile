@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 lxml = "*"
 flask = "*"
+flask-cors = "*"
 
 [dev-packages]
 "flake8" = "*"

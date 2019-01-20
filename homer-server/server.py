@@ -2,7 +2,11 @@ import collections
 
 from flask import Flask
 from flask import abort, jsonify
+from flask_cors import CORS
+
+
 app = Flask(__name__)
+CORS(app)
 
 
 ILIAD = "urn:cts:greekLit:tlg0012.tlg001.perseus-grc2"
