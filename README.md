@@ -14,6 +14,7 @@
 
 ## Web-based Prototypes
 
+* [live n-gram browser](https://jtauber.github.io/homer-ngram/ngram-reader/reader.html)
 * [n-grams in the Iliad](https://jtauber.github.io/homer-ngram/viewer/iliad.html)
 * [mock up of n-gram browser](https://jtauber.github.io/homer-ngram/viewer/iliad-prototype2.html)
 * [mock up of meter visualisation](https://jtauber.github.io/homer-ngram/prototypes/iliad-meter.html)
