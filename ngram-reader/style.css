@@ -5,13 +5,17 @@
 body {
   font-family: 'Noto Serif';
 }
+form.nav a {
+  text-decoration: none;
+  color: #000;
+}
 .ngram {
   stroke: #000;
 }
 .side-by-side {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 20px;
 }
 .text {
@@ -36,7 +40,7 @@ h2 span {
   font-family: 'Noto Sans';
 }
 .text span {
-  padding: 1px 5px;
+  padding: 1px 0.3em;
 }
 .selected {
   background: #FEA;
