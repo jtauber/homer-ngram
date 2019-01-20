@@ -14,6 +14,10 @@ ODYSSEY = "urn:cts:greekLit:tlg0012.tlg002.perseus-grc2"
 #   actually, (ref, line)
 LINES = collections.defaultdict(list)
 
+# maps a CTS URN for an edition to a list of lines per book
+# e.g. BOOK_LENGTH[ODYSSEY][5] will store the number of lines in Odyssey Book 5
+BOOK_LENGTH = collections.defaultdict(lambda: collections.defaultdict(int))
+
 # maps a CTS URN for an edition to a dictionary that maps book.line references
 #   to an index into LINES[CTS_URN]
 # e.g. REF_INDEX[ILIAD["2.389"]] = 1000 because 2.389 is
@@ -28,7 +32,8 @@ def load(filename, work_urn):
             work, passage_ref = ref.split(".", maxsplit=1)
             REF_INDEX[work_urn][passage_ref] = len(LINES[work_urn])
             LINES[work_urn].append((ref.split(".", maxsplit=1)[1], tokens))
-
+            book = passage_ref.split(".")[0]
+            BOOK_LENGTH[work_urn][book] += 1
 
 load("../data/iliad2.txt", ILIAD)
 load("../data/odyssey2.txt", ODYSSEY)
