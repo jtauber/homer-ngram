@@ -15,3 +15,4 @@
 
 * `xml2line.py` converts the TEI/EpiDoc XML from Perseus into a line-based format.
 * `tb2line.py` converts the Treebank XML into a line based format.
+* `tb2line_sentence_lemmas.py` as `tb2line.py` but lemmas by line.

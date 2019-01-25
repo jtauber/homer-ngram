@@ -25,3 +25,4 @@ In principle, these tokens may not be words, they could be lemmas, part-of-speec
 * `combined2.txt` is just the concatenation of `iliad2.txt` and `odyssey2.txt`.
 * `iliad-lemma.txt` is the lemmatised Iliad by line.
 * `odyssey-lemma.txt` is the lemmatised Odyssey by line.
+* `odyssey-lemma-sentence.txt` is the lemmatised Odyssey by sentence.
