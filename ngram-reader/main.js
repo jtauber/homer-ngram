@@ -55,8 +55,9 @@ Vue.component('frag', {
       if (currLine < startLine) return false;
       if (currLine > endLine) return false;
       if (startLine < currLine && currLine < endLine) return true;
-      if (startLine == currLine && Math.round(1000 * index / line[1].split(' ').length) >= startOffset) return true;
-      if (endLine == currLine && Math.round(1000 * index / line[1].split(' ').length) < endOffset) return true;
+      if (startLine == currLine && Math.round(1000 * index / line[1].split(' ').length) < startOffset) return false;
+      if (endLine == currLine && Math.round(1000 * index / line[1].split(' ').length) >= endOffset) return false;
+      return true;
     },
   },
 });
