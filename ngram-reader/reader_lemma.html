@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homer n-gram browser</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main id="app">
+      <form class="nav">
+        <a v-show="ngramId > 1" :href="`?ngram=${ ngramId - 1}`">&laquo;prev</a>
+        <input name="ngram" :value="ngramId">
+        <a v-show="ngramId < 2035" :href="`?ngram=${ ngramId + 1}`">next&raquo;</a>
+      </form>
+      <h2><span>#{{ ngramId }}:</span> {{ ngramContent }}</h2>
+      <div class="side-by-side">
+        <div v-for="nref in ngramRefs">
+          <frag :nref='nref'></frag>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js"></script>
+    <script src="ngram_data_lemma.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

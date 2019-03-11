@@ -14,7 +14,7 @@ var bookLengths = [
 print("// startBook, startLine, startOffset, endBook, endLine, endOffset")
 print("var ngramData = [")
 
-with open("../ngram-data/output-iliad4.txt") as f:
+with open("../ngram-data/output-iliad-lemma4.txt") as f:
     gram_num = 0
     for line in f:
         gram_num += 1
