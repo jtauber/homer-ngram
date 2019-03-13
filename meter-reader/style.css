@@ -1,0 +1,164 @@
+@import url(https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i&amp;subset=greek,greek-ext,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
+@import url(patterns.css);
+
+/* defaults */
+
+body {
+  font-family: "Noto Serif", serif;
+}
+p {
+  font-family: "Noto Sans", sans-serif;
+  color: #689;
+}
+a {
+  color: #689;
+}
+div.container {
+  width: 1200px;
+  margin: 50px auto;
+}
+ol.verse {
+  margin-top: 50px;
+}
+ol.verse li div {
+  word-spacing: 0.3em;
+}
+li {
+  height: 30px;
+  font-family: "Noto Sans", sans-serif;
+  color: #ABC;
+}
+li > div {
+  font-family: "Noto Serif", serif;
+  font-size: 12pt;
+  color: #000;
+}
+
+
+/* toggles */
+
+div.toggles {
+  display: inline-block;
+  background-color: #F7F7F7;
+  padding: 10px 20px;
+  font-family: "Noto Sans", sans-serif;
+  color: #689;
+}
+div.toggles h2 {
+  margin: 0;
+  font-size: 12pt;
+  text-transform: uppercase;
+  color: #689;
+}
+div.toggle {
+  cursor: pointer;
+}
+div.toggle:hover {
+  color: #ACD;
+}
+div.toggle > span.foot-syll,
+div.toggle > span.syll-length,
+div.toggle > span.align-feet,
+div.toggle > span.hide-words
+{
+  color: #DDD;
+}
+body.foot-syll div.toggle > span.foot-syll,
+body.syll-length div.toggle > span.syll-length,
+body.align-feet div.toggle > span.align-feet,
+body.hide-words div.toggle > span.hide-words
+{
+  color: #689;
+}
+
+span.foot {
+  box-sizing: border-box;
+}
+span.syll {
+  box-sizing: border-box;
+}
+
+/* show foot and syllable divisions */
+
+body.foot-syll ol.verse li div {
+  word-spacing: 0.6em;
+}
+body.foot-syll span.syll {
+  padding: 1px 3px;
+}
+body.foot-syll span.syll:first-child {
+  border-left: 2px solid black;
+}
+body.foot-syll span.syll.caesura:first-child {
+  border-left: 3px solid blue;
+}
+body.foot-syll span.syll:not(:first-child) {
+  border-left: 1px dotted black;
+}
+body.foot-syll span.syll.caesura:not(:first-child) {
+  border-left: 3px dotted blue;
+}
+
+
+/* show syllable length */
+
+body.syll-length span.syll.long {
+  background-color: #CCC;
+}
+body.syll-length span.syll:not(.long) {
+  background-color: #EEE;
+}
+
+/* align feet */
+
+body.align-feet li > div {
+  display: flex;
+}
+body.align-feet span.foot {
+  width: 16.66%;
+  display: flex;
+}
+body.align-feet span.syll {
+  padding: 1px 3px;
+}
+body.align-feet:not(.foot-syll) span.foot {
+  border-left: 2px solid transparent;
+}
+body.align-feet.syll-length:not(.foot-syll) span.foot {
+  border-left: 2px solid #CCC;
+}
+body.align-feet:not(.foot-syll) span.syll {
+  border-left: 1px solid transparent;
+}
+body.align-feet span.syll.long {
+  width: 50%;
+}
+body.align-feet span.syll:not(.long) {
+  width: 25%;
+}
+
+body.align-feet span.syll.l {
+  text-align: left;
+}
+body.align-feet span.syll.r {
+  text-align: right;
+}
+body.align-feet span.syll,
+body.align-feet span.syll.c
+{
+  text-align: center;
+}
+body.align-feet span.syll.l::before,
+body.align-feet span.syll.r::after,
+body.align-feet span.syll.c::before,
+body.align-feet span.syll.c::after
+{
+  content: "-";
+}
+
+/* mode 4 */
+
+body.hide-words span.syll {
+  color: transparent;
+}
